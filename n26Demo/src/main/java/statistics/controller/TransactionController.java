@@ -27,7 +27,7 @@ public class TransactionController {
 
     @RequestMapping(value = "/transactions", method = POST)
     public ResponseEntity<Void> create(@Valid @NotNull @RequestBody Transaction transaction) {
-    	transaction.setTimestamp(currentTimeMillis());
+    	//transaction.setTimestamp(currentTimeMillis()); For testing Purpose,else comment
         if (currentTimeMillis() - transaction.getTimestamp() > TIME_LIMIT) {
             // Assume that we are to save a transaction only if it happened within the last minute
             return new ResponseEntity<>(NO_CONTENT);
